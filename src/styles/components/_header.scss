@@ -1,0 +1,15 @@
+.header {
+    background: $light-grey;
+    margin: 0;
+    padding: $sml;
+    text-align: center;
+    font-size: $lg;
+    border-bottom: 1px solid lighten($light-grey, 10%);
+}
+
+.header--subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    padding: 0;
+    color: darken($almost-white, 20%);
+}
