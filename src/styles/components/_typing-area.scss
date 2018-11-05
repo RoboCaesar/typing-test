@@ -1,0 +1,8 @@
+.typing-area {
+    outline: none;
+    background: lighten($light-grey, 40%);
+    padding: $sml;
+    resize: none;
+    width: 95%;
+    margin: $med;
+}

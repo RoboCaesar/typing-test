@@ -1,4 +1,5 @@
 import React from 'react';
+import TypingStatus from './TypingStatus';
 
 export default class TestingArea extends React.Component {
     state = {
@@ -7,12 +8,10 @@ export default class TestingArea extends React.Component {
     render() {
         return (
             <div>
+                <TypingStatus />
                 <p>Here there will be some text for the user to copy while typing.</p>
                 <form>
-                    <label>
-                        Type here:
-                        <textarea />
-                    </label>
+                    <textarea className="typing-area"/>
                 </form>
             </div>
         );
