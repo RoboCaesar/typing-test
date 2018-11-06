@@ -19,22 +19,35 @@ export default class TypingStatus extends React.Component {
     //This method is ONLY called upon an update.
     compareStrings = (testString, userString) => {
         //First, replace any unneeded whitespace with single spaces using regex
-        userString = string.replace(/\s{2,}/g,' ');
+        userString = userString.replace(/\s{2,}/g,' ');
         let cursor = userString.length;
         //Then, compare the strings.
-        let highlightedSlice = testString.slice(0, cursor);
+        let returnString = [];
+        for (let i = 0; i < testString.length; i++) {
+            let element = testString[i];
+            if (i < cursor) {
+                if (userString[i] === element) {
+                    returnString.push(<span key={i} className="correct-words">{element}</span>);
+                } else {
+                    returnString.push(<span key={i} className="incorrect-words">{element}</span>);
+                }
+            } 
+            else {
+                returnString.push(<span key={i}>{element}</span>);
+            }
+        }
+        return returnString;
 
-        //iterate through highlighted slice. If it's a correct part, return 1, if not, return -1
-        //Then slice again?
     }
 
     render() {
         return (
             <div>
-                <p>Current Word Count: {this.countWords(this.props.userString)}</p>
+                {/* <p>Current Word Count: {this.countWords(this.props.userString)}</p> */}
                 <div className="text-to-copy">
                     <p>This is a <span className="correct-words">test string</span>. Please <span className="incorrect-words">ignore</span>.</p>
-                    <p>{this.props.compareText}</p>
+                    {/* <p>{this.props.compareText}</p> */}
+                    <p>{this.compareStrings(this.props.compareText, this.props.userString)}</p>
                 </div>
             </div>
         );
