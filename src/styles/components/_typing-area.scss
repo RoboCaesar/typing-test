@@ -6,3 +6,18 @@
     width: 95%;
     margin: $med;
 }
+
+.text-to-copy {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+
+.correct-words {
+    background-color: #3fa;
+    color: $dark-grey;
+}
+
+.incorrect-words {
+    background-color: #faa;
+    color: $dark-grey;
+}
