@@ -6,7 +6,8 @@ import TestingArea from './TestingArea';
 
 export default class TypingApp extends React.Component {
     state = {
-        testing: false
+        testing: false,
+        userCursor: 0
     }
 
     handleTextChange() {

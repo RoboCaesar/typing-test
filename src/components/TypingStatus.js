@@ -46,7 +46,7 @@ export default class TypingStatus extends React.Component {
             <div>
                 {/* <p>Current Word Count: {this.countWords(this.props.userString)}</p> */}
                 <div className="text-to-copy">
-                    <p>This is a <span className="correct-words">test string</span>. Please <span className="incorrect-words">ignore</span>.</p>
+                    {/* <p>This is a <span className="correct-words">test string</span>. Please <span className="incorrect-words">ignore</span>.</p> */}
                     {/* <p>{this.props.compareText}</p> */}
                     <p>{this.compareStrings(this.props.compareText, this.props.userString)}</p>
                 </div>
