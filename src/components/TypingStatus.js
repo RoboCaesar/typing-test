@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class TypingStatus extends React.Component {
 
     state = {
