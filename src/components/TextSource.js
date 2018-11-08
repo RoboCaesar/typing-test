@@ -14,7 +14,7 @@ const textSource = (option) => {
             return mysteriousIsland;
             break;
         case 'oliver':
-            return oliver.slice(0, 100);
+            return oliver;
             break;
         case 'tomSawyer':
             return tomSawyer;
