@@ -13,10 +13,10 @@ const Options = (props) => (
         </div>
         <div className="option">
             <p>Time limit</p>
-            <select name="time-limit">
-                <option value="1">1 minute</option>
-                <option value="2">2 minutes</option>
-                <option value="3">3 minutes</option>
+            <select name="time-limit" onChange={props.handleTimeLimitChange}>
+                <option value="60">1 minute</option>
+                <option value="120">2 minutes</option>
+                <option value="180">3 minutes</option>
             </select>
         </div>
     </div>

@@ -7,9 +7,15 @@
     border-bottom: 1px solid lighten($light-grey, 10%);
 }
 
+.header--title {
+    margin: $med;
+    text-shadow: 2px 2px 3px #009;
+}
+
 .header--subtitle {
     font-size: 1.2rem;
     font-style: italic;
     padding: 0;
+    margin: 0;
     color: darken($almost-white, 20%);
 }

@@ -30,9 +30,9 @@
 }
 
 .current-letter {
-    background-color: #dbf;
-    color: $dark-grey;
-    font-weight: 800;
+    background-color: darken($dark-grey, 25%);
+    font-weight: 1000;
+    border: 1px solid white;
 }
 
 .timer-text {
