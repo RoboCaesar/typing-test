@@ -7,12 +7,13 @@ import TestingArea from './TestingArea';
 export default class TypingApp extends React.Component {
     state = {
         testing: false,
-        userCursor: 0
+        userInput: '',
     }
 
-    handleTextChange() {
-        console.log("User changed the text");
+    handleTextChange(event) {
+        console.log("User changed the text to... " + event.target.value);
     }
+
     render() {
         return (
             <div>
@@ -22,7 +23,11 @@ export default class TypingApp extends React.Component {
                     <Options 
                         handleTextChange={this.handleTextChange}
                     />
-                    <TestingArea />
+                    <TestingArea 
+                        compareText={this.compareText}
+                        userInput={this.userInput}
+                        highlightedText={this.highlightedText}
+                    />
                 </div>
             </div>
         );

@@ -20,7 +20,6 @@ export default class TestingArea extends React.Component {
     }
 
     componentWillMount() {
-        let highlightObject = [];
         // for (let i = 0; i < this.props.compareText.length; i++) {
         //     highlightObject.push(<span key={i}>{this.props.compareText[i]}</span>);
         // }
@@ -55,12 +54,17 @@ export default class TestingArea extends React.Component {
 
     handleUserInput = (event) => {
         const val = event.target.value;
-        this.setState(() => (
-            {
-                value: val,
-                highlightedText: this.highlightText(val)
-            }
-        ));
+        if (val[val.length - 1] === ' ' && this.state.value[this.state.value.length - 1] === ' ') {
+            //do nothing
+        }
+        else {
+            this.setState(() => (
+                {
+                    value: val,
+                    highlightedText: this.highlightText(val)
+                }
+            ));
+        }
     };
 
     render() {

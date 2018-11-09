@@ -5,10 +5,10 @@ const Options = (props) => (
         <div className="option">
             <p>The text</p>
             <select name="text" onChange={props.handleTextChange}>
-                <option value="iliad">Mysterious Island</option>
-                <option value="macbeth">Oliver Twist</option>
-                <option value="news">Tom Sawyer</option>
-                <option value="wikipedia">Text from a Wikipedia article about cheese</option>
+                <option value="mysterious-island">Mysterious Island</option>
+                <option value="oliver">Oliver Twist</option>
+                <option value="tom-saywer">Tom Sawyer</option>
+                <option value="wiki-info">Text from a Wikipedia article about cheese</option>
             </select>
         </div>
         <div className="option">
