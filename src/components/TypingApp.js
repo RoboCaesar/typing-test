@@ -1,17 +1,13 @@
 import React from 'react';
 import Header from './Header';
 import Instructions from './Instructions';
-import Options from './Options';
 import TestingArea from './TestingArea';
+import TestTimer from './TestTimer';
 
 export default class TypingApp extends React.Component {
     state = {
         testing: false,
         userInput: '',
-    }
-
-    handleTextChange(event) {
-        console.log("User changed the text to... " + event.target.value);
     }
 
     render() {
@@ -20,14 +16,8 @@ export default class TypingApp extends React.Component {
                 <Header/>
                 <div className="app-container">
                     <Instructions/>
-                    <Options 
-                        handleTextChange={this.handleTextChange}
-                    />
-                    <TestingArea 
-                        compareText={this.compareText}
-                        userInput={this.userInput}
-                        highlightedText={this.highlightedText}
-                    />
+                    <TestTimer />
+                    <TestingArea/>
                 </div>
             </div>
         );

@@ -28,3 +28,19 @@
     background-color: #faa;
     color: $dark-grey;
 }
+
+.current-letter {
+    background-color: #dbf;
+    color: $dark-grey;
+    font-weight: 800;
+}
+
+.timer-text {
+    font-size: 4rem;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    width: 20%;
+}

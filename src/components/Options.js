@@ -7,7 +7,7 @@ const Options = (props) => (
             <select name="text" onChange={props.handleTextChange}>
                 <option value="mysterious-island">Mysterious Island</option>
                 <option value="oliver">Oliver Twist</option>
-                <option value="tom-saywer">Tom Sawyer</option>
+                <option value="tom-sawyer">Tom Sawyer</option>
                 <option value="wiki-info">Text from a Wikipedia article about cheese</option>
             </select>
         </div>

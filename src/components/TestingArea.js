@@ -1,11 +1,13 @@
 import React from 'react';
 import TypingStatus from './TypingStatus';
 import textSource from './TextSource';
+import Options from './Options';
+import showPartOfText from './StringFunctions';
 
 export default class TestingArea extends React.Component {
     state = {
-        value: '',
-        compareText: textSource('oliver'),//"This is a string for the user to copy. It should be quite long so the user doesn't finish it."
+        value: '', //What the user has entered in their testing window
+        compareText: textSource('mysterious-island'),//"This is a string for the user to copy. It should be quite long so the user doesn't finish it."
         highlightedText: []
     };
 
@@ -20,9 +22,6 @@ export default class TestingArea extends React.Component {
     }
 
     componentWillMount() {
-        // for (let i = 0; i < this.props.compareText.length; i++) {
-        //     highlightObject.push(<span key={i}>{this.props.compareText[i]}</span>);
-        // }
         this.setState(() => ({
             highlightedText: this.convertStringToArray(this.state.compareText)
         }));
@@ -38,7 +37,6 @@ export default class TestingArea extends React.Component {
         for (let i = minCursor; i < maxCursor; i++) {
             let element = this.state.compareText[i];
             if (i < cursor) {
-                console.log("fd;lskajf;dlskajf  Made it here!");
                 if (str[i] === element) {
                     tempHighlightedText[i] = (<span key={i} className="correct-words">{element}</span>);
                 } else {
@@ -54,7 +52,7 @@ export default class TestingArea extends React.Component {
 
     handleUserInput = (event) => {
         const val = event.target.value;
-        if (val[val.length - 1] === ' ' && this.state.value[this.state.value.length - 1] === ' ') {
+        if (val[val.length - 1] === ' ' && this.state.compareText[this.state.value.length - 1] === ' ') {
             //do nothing
         }
         else {
@@ -67,13 +65,30 @@ export default class TestingArea extends React.Component {
         }
     };
 
+    handleTextChange = (event) => {
+        let newText = event.target.value;
+        if (event.target.value != '') {
+            this.setState(() => ({
+                value: '',
+                compareText: textSource(newText),
+                highlightedText: this.convertStringToArray(textSource(newText))
+            }));
+        }
+    };
+
     render() {
         return (
             <div>
-                <TypingStatus 
+                <Options 
+                    handleTextChange={this.handleTextChange}
+                />
+                {/* <TypingStatus 
                     userStringLen={this.state.value.length}
                     highlightedText={this.state.highlightedText}
-                />
+                /> */}
+                <div className="text-to-copy">
+                    <p>{showPartOfText(this.state.value.length, this.state.highlightedText)}...</p>
+                </div>
                 <form>
                     <textarea className="typing-area" value={this.state.value} onChange={this.handleUserInput}/>
                 </form>

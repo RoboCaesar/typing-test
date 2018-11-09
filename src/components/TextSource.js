@@ -10,16 +10,16 @@ const tomSawyer = "They sprang away, stumbling over roots and among vines in the
 
 const textSource = (option) => {
     switch(option) {
-        case 'mysteriousIsland':
+        case 'mysterious-island':
             return mysteriousIsland;
             break;
         case 'oliver':
             return oliver;
             break;
-        case 'tomSawyer':
+        case 'tom-sawyer':
             return tomSawyer;
             break;
-        case 'wikiInfo':
+        case 'wiki-info':
             return wikiInfo;
             break;
         default:
