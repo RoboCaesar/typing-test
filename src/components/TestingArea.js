@@ -11,7 +11,7 @@ export default class TestingArea extends React.Component {
         value: '', //What the user has entered in their testing window
         compareText: textSource('mysterious-island'),//"This is a string for the user to copy. It should be quite long so the user doesn't finish it."
         highlightedText: [],
-        timeLimit: 60
+        timeLimit: 600
     };
 
     convertStringToArray = (str) => {
@@ -86,9 +86,10 @@ export default class TestingArea extends React.Component {
         let newTime = event.target.value;
         console.log("New time limit: " + parseInt(newTime, 10));
         if (event.target.value != '') {
-            this.setState(() => {
-                timeLimit: parseInt(newTime, 10)
-            });
+            this.setState(() => ({
+                timeLimit: parseInt(newTime, 10),
+                value: ''
+            }));
         }
     }
 
@@ -97,6 +98,7 @@ export default class TestingArea extends React.Component {
             <div>
                 <TestTimer 
                     timeLimit={this.state.timeLimit}
+                    userProgress={this.state.value.length}
                 />
                 <Options 
                     handleTextChange={this.handleTextChange}

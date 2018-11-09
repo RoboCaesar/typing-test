@@ -35,12 +35,20 @@
     border: 1px solid white;
 }
 
-.timer-text {
-    font-size: 4rem;
-    padding: 10px;
-    margin: 0;
-    text-align: center;
+.timer {
     border: 1px solid $light-grey;
     border-radius: 5px;
-    width: 20%;
+    display: inline-flex;
+    padding: $med;
+}
+.timer--text {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.timer--deciseconds {
+    padding-top: $xlg;
+    margin: 0;
+    margin-left: $med;
+    color: darken($almost-white, 25%);
 }
