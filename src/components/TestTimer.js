@@ -40,10 +40,14 @@ export class TestTimer extends React.Component {
         let seconds = Math.floor((timeRemaining - (minutes * 600)) / 10);
         let deciseconds = timeRemaining % 10;
         return (
-            <span className="timer">
+            <div className={"timer " + (timeRemaining < 100 && "timer--hurryup")}>
                 <h2 className="timer--text">{minutes}:{seconds < 10 ? '0' + seconds : seconds}</h2>
                 <h3 className="timer--deciseconds">{deciseconds}</h3>
-            </span>
+                <div className="stats">
+                    <p className="stats--text">Accuracy: </p>
+                    <p className="stats--text">Words Per Minute: </p>
+                </div>
+            </div>
         );
     }
 

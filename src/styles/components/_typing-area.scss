@@ -36,10 +36,12 @@
 }
 
 .timer {
-    border: 1px solid $light-grey;
-    border-radius: 5px;
+    // border: 1px solid $light-grey;
+    background-color: $light-grey;
+    border-radius: 7px;
     display: inline-flex;
     padding: $med;
+    padding-bottom: $sml;
 }
 .timer--text {
     font-size: 4rem;
@@ -51,4 +53,27 @@
     margin: 0;
     margin-left: $med;
     color: darken($almost-white, 25%);
+}
+
+// https://html-online.com/articles/blinking-text-css-animation/
+.timer--hurryup {
+    animation:blinkingText 0.5s infinite;
+}
+
+@keyframes blinkingText {
+    0% { color: red; }
+    50% { color: #faa; }
+    100% { color: red; }
+}
+
+.stats {
+    margin: 0;
+    display: grid;
+    padding: $med;
+    margin-left: $med;
+}
+
+.stats--text {
+    padding: 0;
+    margin: 0;
 }

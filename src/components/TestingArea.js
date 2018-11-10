@@ -11,8 +11,19 @@ export default class TestingArea extends React.Component {
         value: '', //What the user has entered in their testing window
         compareText: textSource('mysterious-island'),//"This is a string for the user to copy. It should be quite long so the user doesn't finish it."
         highlightedText: [],
-        timeLimit: 600
+        timeLimit: 600,
+        wordsFinished: 0,
+        accuracy: 0
     };
+
+    resetTest = () => {
+        console.log("reset!");
+        this.setState(() => ({
+            value: '',
+            wordsFinished: 0,
+            accuracy: 0
+        }));
+    }
 
     convertStringToArray = (str) => {
         let emptyArr = [];
@@ -75,10 +86,10 @@ export default class TestingArea extends React.Component {
         let newText = event.target.value;
         if (event.target.value != '') {
             this.setState(() => ({
-                value: '',
                 compareText: textSource(newText),
                 highlightedText: this.convertStringToArray(textSource(newText))
             }));
+            this.resetTest();
         }
     };
 
@@ -88,9 +99,16 @@ export default class TestingArea extends React.Component {
         if (event.target.value != '') {
             this.setState(() => ({
                 timeLimit: parseInt(newTime, 10),
-                value: ''
             }));
+            this.resetTest();
         }
+    }
+
+    finishTest = (finalWPM, finalAccuracy) => {
+        //TODO:
+        //display dialogue window with results
+        //reset test settings (so that when the window is closed, the test can immediately be started again)
+        this.resetTest();
     }
 
     render() {
