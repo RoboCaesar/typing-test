@@ -13,7 +13,7 @@ export default class TestingArea extends React.Component {
         highlightedText: [],
         timeLimit: 600,
         wordsFinished: 0,
-        accuracy: 0
+        accurateChars: 0
     };
 
     resetTest = () => {
@@ -21,7 +21,7 @@ export default class TestingArea extends React.Component {
         this.setState(() => ({
             value: '',
             wordsFinished: 0,
-            accuracy: 0
+            accurateChars: 0
         }));
     }
 
@@ -69,10 +69,30 @@ export default class TestingArea extends React.Component {
 
     handleUserInput = (event) => {
         const val = event.target.value;
-        if (val[val.length - 1] === ' ' && this.state.compareText[this.state.value.length - 1] === ' ') {
+        const userPosition = this.state.value.length;
+        if (val[val.length - 1] === ' ' && this.state.compareText[userPosition - 1] === ' ' && val.length > userPosition) {
             //do nothing
         }
         else {
+            //Have to update the number of correct characters (or wpm count)
+            if (val.length < userPosition) {
+                //This condition means the number of characters has decreased. If a deleted character was 'accurate',
+                //then lower the accurate character count (for purposes of calculating accuracy)
+                if (this.state.compareText[userPosition - 1] === this.state.value[userPosition - 1]) {
+                    this.setState((prevState) => ({ accurateChars: prevState.accurateChars - 1 }));
+                }
+                if (this.state.compareText[userPosition - 1] === ' ') {
+                    this.setState((prevState) => ({ wordsFinished: prevState.wordsFinished - 1}));
+                }
+            } 
+            if (this.state.compareText[val.length -1] === ' ' && val.length > userPosition) {
+                this.setState((prevState) => ({
+                    wordsFinished: prevState.wordsFinished + 1
+                }));
+            }
+            if (val[val.length - 1] === this.state.compareText[val.length -1] && val.length > userPosition) {
+                this.setState((prevState) => ({ accurateChars: prevState.accurateChars + 1}));
+            }
             this.setState(() => (
                 {
                     value: val,
@@ -129,6 +149,8 @@ export default class TestingArea extends React.Component {
                 <div className="text-to-copy">
                     <p>{showPartOfText(this.state.value.length, this.state.highlightedText)}...</p>
                 </div>
+                {/* <p>Words finished: {this.state.wordsFinished}</p>
+                <p>Accuracy: {((this.state.accurateChars / this.state.value.length) * 100).toFixed(1)}%</p> */}
                 <form>
                     <textarea className="typing-area" value={this.state.value} onChange={this.handleUserInput}/>
                 </form>
