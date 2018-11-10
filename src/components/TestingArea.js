@@ -4,7 +4,7 @@ import textSource from './TextSource';
 import Options from './Options';
 import showPartOfText from './StringFunctions';
 import TestTimer from './TestTimer';
-
+import Results from './Results';
 
 export default class TestingArea extends React.Component {
     state = {
@@ -13,16 +13,29 @@ export default class TestingArea extends React.Component {
         highlightedText: [],
         timeLimit: 600,
         wordsFinished: 0,
-        accurateChars: 0
+        accurateChars: 0,
+        testFinished: false,
+        finalWPM: 0,
+        finalAcc: 0
     };
 
-    resetTest = () => {
+    resetTest = (updateText=true) => {
         console.log("reset!");
-        this.setState(() => ({
-            value: '',
-            wordsFinished: 0,
-            accurateChars: 0
-        }));
+        if (updateText) {
+            this.setState(() => ({
+                value: '',
+                wordsFinished: 0,
+                accurateChars: 0,
+                highlightedText: this.convertStringToArray(this.state.compareText)
+            }));
+        }
+        else {
+            this.setState(() => ({
+                value: '',
+                wordsFinished: 0,
+                accurateChars: 0,
+            }));            
+        }
     }
 
     convertStringToArray = (str) => {
@@ -39,7 +52,6 @@ export default class TestingArea extends React.Component {
         this.setState(() => ({
             highlightedText: this.convertStringToArray(this.state.compareText)
         }));
-
     }
 
     highlightText = (str) => {
@@ -109,7 +121,7 @@ export default class TestingArea extends React.Component {
                 compareText: textSource(newText),
                 highlightedText: this.convertStringToArray(textSource(newText))
             }));
-            this.resetTest();
+            this.resetTest(false);
         }
     };
 
@@ -124,10 +136,22 @@ export default class TestingArea extends React.Component {
         }
     }
 
+    handleCloseWindow = () => {
+        this.setState(() => ({
+            finished: false
+        }));
+    }
+
     finishTest = (finalWPM, finalAccuracy) => {
         //TODO:
         //display dialogue window with results
         //reset test settings (so that when the window is closed, the test can immediately be started again)
+        console.log("finished...");
+        this.setState(() => ({
+            finished: true,
+            finalWPM: finalWPM,
+            finalAcc: finalAccuracy
+        }));
         this.resetTest();
     }
 
@@ -137,6 +161,9 @@ export default class TestingArea extends React.Component {
                 <TestTimer 
                     timeLimit={this.state.timeLimit}
                     userProgress={this.state.value.length}
+                    wordsFinished={this.state.wordsFinished}
+                    accurateChars={this.state.accurateChars}
+                    finishTest={this.finishTest}
                 />
                 <Options 
                     handleTextChange={this.handleTextChange}
@@ -154,6 +181,12 @@ export default class TestingArea extends React.Component {
                 <form>
                     <textarea className="typing-area" value={this.state.value} onChange={this.handleUserInput}/>
                 </form>
+                <Results 
+                    finished={this.state.finished}
+                    finalWPM={this.state.finalWPM}
+                    finalAcc={this.state.finalAcc}
+                    handleCloseWindow={this.handleCloseWindow}
+                />
             </div>
         );
     }
