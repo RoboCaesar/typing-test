@@ -1,7 +1,15 @@
 .options {
     display: flex;
+    border-radius: 5px;
+    border: 1px solid $light-grey;
+    margin-top: $sml;
+    padding-bottom: $med;
 }
 
 .option {
     padding-right: $med;
+}
+
+.option--text {
+    font-size: $med;
 }

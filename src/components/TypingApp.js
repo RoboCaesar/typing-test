@@ -5,17 +5,31 @@ import TestingArea from './TestingArea';
 
 export default class TypingApp extends React.Component {
     state = {
-        testing: false,
-        userInput: '',
+        disabled: false
+    }
+
+    disableTest = () => {
+        this.setState(() => ({
+            disabled: true
+        }));
+    }
+
+    enableTest = () => {
+        this.setState(() => ({
+            disabled: false
+        }));
     }
 
     render() {
         return (
-            <div>
+            <div className={this.state.disabled == true ? "blurred-background" : ""}>
                 <Header/>
                 <div className="app-container">
                     <Instructions/>
-                    <TestingArea/>
+                    <TestingArea
+                        disableTest = {this.disableTest}
+                        enableTest = {this.enableTest}
+                    />
                 </div>
             </div>
         );

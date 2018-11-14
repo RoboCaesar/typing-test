@@ -8,10 +8,17 @@
     align-items: center;
     transition: opacity 200ms ease-in-out;
     background-color: rgba(0, 0, 0, 0.5);
+    border: none;
 }
 
 .ReactModalPortal .ReactModal__Overlay--after-open {
     opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.blurred-background {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);    
 }
 
 .ReactModalPortal .ReactModal__Overlay--before-close {
@@ -22,4 +29,25 @@
     padding: 20px;
     background-color: $dark-grey;
     box-shadow: 3px 3px 3px #000;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.results-box--button {
+    background-color: $light-grey;
+    color: $almost-white;
+    padding: $med;
+    border: none;
+    border-radius: 5px;
+    border-right: 2px solid $medium-grey;
+    border-bottom: 2px solid $medium-grey;
+    width: 100%;
+    font-weight: 800;
+    //darken($almost-white, 20%);
 }

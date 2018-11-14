@@ -1,5 +1,4 @@
 import React from 'react';
-import TypingStatus from './TypingStatus';
 import textSource from './TextSource';
 import Options from './Options';
 import showPartOfText from './StringFunctions';
@@ -140,6 +139,7 @@ export default class TestingArea extends React.Component {
         this.setState(() => ({
             finished: false
         }));
+        this.props.enableTest();
     }
 
     finishTest = (finalWPM, finalAccuracy) => {
@@ -153,6 +153,7 @@ export default class TestingArea extends React.Component {
             finalAcc: finalAccuracy
         }));
         this.resetTest();
+        this.props.disableTest();
     }
 
     render() {
@@ -169,15 +170,9 @@ export default class TestingArea extends React.Component {
                     handleTextChange={this.handleTextChange}
                     handleTimeLimitChange={this.handleTimeLimitChange}
                 />
-                {/* <TypingStatus 
-                    userStringLen={this.state.value.length}
-                    highlightedText={this.state.highlightedText}
-                /> */}
                 <div className="text-to-copy">
                     <p>{showPartOfText(this.state.value.length, this.state.highlightedText)}...</p>
                 </div>
-                {/* <p>Words finished: {this.state.wordsFinished}</p>
-                <p>Accuracy: {((this.state.accurateChars / this.state.value.length) * 100).toFixed(1)}%</p> */}
                 <form>
                     <textarea className="typing-area" value={this.state.value} onChange={this.handleUserInput}/>
                 </form>

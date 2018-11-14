@@ -17,6 +17,10 @@
 .text-to-copy {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;
+    background-color: $light-grey;
+    border-radius: 7px;
+    padding-right: $sml;
+    padding-left: $sml;
 }
 
 .correct-words {

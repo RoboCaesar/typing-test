@@ -8,14 +8,19 @@ const Results = (props) => (
         isOpen={props.finished}
         onRequestClose={props.handleCloseWindow}
         contentLabel="Selected Option"
-        // closeTimeoutMS={200}
+        closeTimeoutMS={200}
         className="results-box"
+        style={{
+            overlay: {
+                backgroundColor: 'rgba(0, 0, 25, 0.75)'
+            }
+        }}
     >
-        <div className="results-box">
+        <div>
             <h3 className="results-box--text">You're done!</h3>
             <h2>Words Per Minute: {props.finalWPM}</h2>
             <h2>Accuracy: {props.finalAcc}</h2>
-            <button onClick={props.handleCloseWindow}>Try Again</button>
+            <button onClick={props.handleCloseWindow} className="results-box--button">Try Again</button>
         </div>
     </Modal>
 );
