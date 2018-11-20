@@ -113,9 +113,19 @@ export default class TestingArea extends React.Component {
         }
     };
 
-    handleTextChange = (event) => {
-        let newText = event.target.value;
-        if (event.target.value != '') {
+    // handleTextChange = (event) => {
+    //     let newText = event.target.value;
+    //     if (event.target.value != '') {
+    //         this.setState(() => ({
+    //             compareText: textSource(newText),
+    //             highlightedText: this.convertStringToArray(textSource(newText))
+    //         }));
+    //         this.resetTest(false);
+    //     }
+    // };
+    handleTextChange = (value) => {
+        let newText = value.value;
+        if (newText != '') {
             this.setState(() => ({
                 compareText: textSource(newText),
                 highlightedText: this.convertStringToArray(textSource(newText))
@@ -125,9 +135,10 @@ export default class TestingArea extends React.Component {
     };
 
     handleTimeLimitChange = (event) => {
-        let newTime = event.target.value;
+        console.log(event);
+        let newTime = event.value;
         console.log("New time limit: " + parseInt(newTime, 10));
-        if (event.target.value != '') {
+        if (newTime != '') {
             this.setState(() => ({
                 timeLimit: parseInt(newTime, 10),
             }));

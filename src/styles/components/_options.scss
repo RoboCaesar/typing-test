@@ -12,4 +12,21 @@
 
 .option--text {
     font-size: $med;
+    font-weight: 800;
+    margin-left: $med;
+    margin-bottom: 0px;
+}
+
+.option--select {
+    min-width: 11rem;
+    //background: darken($dark-grey, 30%);
+    color: black;
+    margin: $med;
+    margin-top: 0px;
+}
+
+.option--select > div {
+    color: black;
+    margin: 0px;
+    background: lighten($light-grey, 40%);
 }
