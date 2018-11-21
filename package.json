@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "webpack",
-    "dev-server": "webpack-dev-server"
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +24,8 @@
     "react-select": "^2.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.1.0",

@@ -19,7 +19,8 @@ const Results = (props) => (
         <div>
             <h3 className="results-box--text">You're done!</h3>
             <h2>Words Per Minute: {props.finalWPM}</h2>
-            <h2>Accuracy: {props.finalAcc}</h2>
+            <h2>Accuracy: {props.finalAcc}%</h2>
+            {props.finalAcc < 93 && <h3>Try to be more accurate though!</h3>}
             <button onClick={props.handleCloseWindow} className="results-box--button">Try Again</button>
         </div>
     </Modal>
